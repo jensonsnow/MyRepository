@@ -13,13 +13,27 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
+	<!-- 第二种方式通过context标签引入的 -->
+	<context:property-placeholder location="classpath:jdbc.properties"/>
 	
 	<!-- 配置Service -->
 	<bean id="accountService" class="com.hui.tx.demo1.AccountServiceImpl">
 		<property name="accountDao" ref="accountDao"></property>
 	</bean>
 	
-	<!-- 配置Dao  ff-->
+	<!-- 配置Dao  -->
 	<bean id="accountDao" class="com.hui.tx.demo1.AccountDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
 	</bean>
+	
+	<!-- 配置连接池 -->
+	<!-- 配置C3P0连接池=============================== -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClass}"/>
+		<property name="jdbcUrl" value="${jdbc.url}"/>
+		<property name="user" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	 
 </beans>

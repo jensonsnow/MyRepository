@@ -17,7 +17,8 @@ public class AccountServiceImpl implements AccountService {
 	 */
 	public void transfer(String from, String to, Double money) {
 		// TODO Auto-generated method stub
-
+		accountDao.outMoney(from, money);
+		accountDao.inMoney(to, money);
 	}
 
 }
