@@ -13,4 +13,13 @@
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
 	
+	
+	<!-- 配置Service -->
+	<bean id="accountService" class="com.hui.tx.demo1.AccountServiceImpl">
+		<property name="accountDao" ref="accountDao"></property>
+	</bean>
+	
+	<!-- 配置Dao  ff-->
+	<bean id="accountDao" class="com.hui.tx.demo1.AccountDaoImpl">
+	</bean>
 </beans>
