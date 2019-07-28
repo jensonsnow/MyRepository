@@ -19,7 +19,6 @@
 	<!-- 配置Service -->
 	<bean id="accountService" class="com.hui.tx.demo1.AccountServiceImpl">
 		<property name="accountDao" ref="accountDao"></property>
-		
 		<!-- 注入事务管理的模板 -->
 		<property name="transactionTemplate" ref="transactionTemplate"></property>
 	</bean>
@@ -39,13 +38,13 @@
 	</bean>
 	
 	<!-- 配置平台事务管理器 -->
-	<bean id="transactionManager" class="">
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
 	<!-- 配置事务管理的模板 -->
-	<bean id="transactionTemplate" class="">
-		<property name="transactionManager"></property>
+	<bean id="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager"></property>
 	</bean>
 	
 	

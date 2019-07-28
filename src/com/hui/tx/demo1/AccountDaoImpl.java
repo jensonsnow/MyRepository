@@ -7,14 +7,17 @@ public class AccountDaoImpl extends JdbcDaoSupport implements AccountDao {
 
 	public void outMoney(String from, Double money) {
 		// TODO Auto-generated method stub
-		this.getJdbcTemplate().update("update account set money=money-? where name=?",money,from);
+		String sql = "update account set money=money-"+money+" where name='"+from+"'";
+		System.out.println(sql);
+		this.getJdbcTemplate().update(sql);
 
 	}
 
 	public void inMoney(String to, Double money) {
 		// TODO Auto-generated method stub
-		this.getJdbcTemplate().update("update account set money=money+? where name=?",money,to);
-
+		String sql = "update account set money=money+"+money+" where name='"+to+"'";
+		System.out.println(sql);
+		this.getJdbcTemplate().update(sql);
 	}
 
 }
